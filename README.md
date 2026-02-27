@@ -38,14 +38,13 @@ asm/
 
 vm/
 ├── headers/
-│   ├── vm.h                   - VM types, constants, function declarations
-│   └── vm_tests.h             - test declarations
+│   └── vm.h                   - VM types, constants, function declarations
 ├── src/
 │   ├── core/                  - VM initialization, memory loading
 │   ├── debug/                 - debug dump (registers, stack, memory near PC)
 │   ├── flags/                 - CPU flags logic (zero, sign, carry, overflow)
 │   └── opcodes/               - instruction execution (fetch-decode-execute loop)
-├── tests/                     - built-in test runner
+├── tests/                     - tests, the same as in examples/
 ├── main.c                     - entry point
 └── makefile
 ```
