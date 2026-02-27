@@ -1,0 +1,22 @@
+; "Hello!"
+
+    LOAD R0, 0x00, 72      ; 'H'
+    PRINTC R0
+    
+    LOAD R0, 0x00, 101     ; 'e'
+    PRINTC R0
+    
+    LOAD R0, 0x00, 108     ; 'l'
+    PRINTC R0
+    PRINTC R0              ; 'l'
+    
+    LOAD R0, 0x00, 111     ; 'o'
+    PRINTC R0
+    
+    LOAD R0, 0x00, 33      ; '!'
+    PRINTC R0
+    
+    LOAD R0, 0x00, 10      ; '\n'
+    PRINTC R0
+    
+    HALT

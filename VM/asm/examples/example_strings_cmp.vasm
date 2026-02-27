@@ -1,0 +1,89 @@
+.data
+s1:      "hello"
+s2:      "hello"
+s3:      "world"
+s4:      "hell"
+s5:      "helloX"
+yes:     "EQUAL\n"
+no:      "NOT EQUAL\n"
+
+.text
+start:
+    ; "hello" vs "hello" -> EQUAL
+    LOAD R0, s1
+    LOAD R1, s2
+    CALL strcmp
+    CMPI R7, 0
+    JE   p1_eq
+    LOAD R0, no
+    PRINTS R0
+    JMP  t2
+p1_eq:
+    LOAD R0, yes
+    PRINTS R0
+
+t2: ; "hello" vs "world" -> NOT EQUAL
+    LOAD R0, s1
+    LOAD R1, s3
+    CALL strcmp
+    CMPI R7, 0
+    JE   p2_eq
+    LOAD R0, no
+    PRINTS R0
+    JMP  t3
+p2_eq:
+    LOAD R0, yes
+    PRINTS R0
+
+t3: ; "hello" vs "hell" -> NOT EQUAL
+    LOAD R0, s1
+    LOAD R1, s4
+    CALL strcmp
+    CMPI R7, 0
+    JE   p3_eq
+    LOAD R0, no
+    PRINTS R0
+    JMP  t4
+p3_eq:
+    LOAD R0, yes
+    PRINTS R0
+
+t4: ; "hello" vs "helloX" -> NOT EQUAL
+    LOAD R0, s1
+    LOAD R1, s5
+    CALL strcmp
+    CMPI R7, 0
+    JE   p4_eq
+    LOAD R0, no
+    PRINTS R0
+    JMP  done
+p4_eq:
+    LOAD R0, yes
+    PRINTS R0
+
+done:
+    HALT
+
+strcmp:
+    SUB  R2, R2, R2
+
+scmp_loop:
+    ADD  R3, R0, R2
+    LDB  R3, R3         ; A[i]
+    ADD  R4, R1, R2
+    LDB  R4, R4         ; B[i]
+    CMP  R3, R4
+    JNE  scmp_neq
+    CMPI R3, 0
+    JE   scmp_eq
+    ADDI R2, R2, 1
+    JMP  scmp_loop
+
+scmp_eq:
+    SUB  R7, R7, R7
+    RET
+
+scmp_neq:
+    SUB  R7, R7, R7
+    ADDI R7, R7, 1
+    RET

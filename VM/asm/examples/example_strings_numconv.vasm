@@ -1,0 +1,62 @@
+.data
+hex_tbl:    "0123456789ABCDEF"
+prefix:     "0x"
+newline:    "\n"
+
+.text
+start:
+    ; 0x2A (42) -> "0x2A"
+    LOAD R0, prefix
+    PRINTS R0
+    ADDI R1, R1, 42
+    CALL print_hex_byte
+    LOAD R0, newline
+    PRINTS R0
+
+    ; 0xFF (255) -> "0xFF"
+    LOAD R0, prefix
+    PRINTS R0
+    SUB  R1, R1, R1
+    ADDI R1, R1, 255
+    CALL print_hex_byte
+    LOAD R0, newline
+    PRINTS R0
+
+    ; 0x00 (0) -> "0x00"
+    LOAD R0, prefix
+    PRINTS R0
+    SUB  R1, R1, R1
+    CALL print_hex_byte
+    LOAD R0, newline
+    PRINTS R0
+
+    ; 0x0F (15) -> "0x0F"
+    LOAD R0, prefix
+    PRINTS R0
+    SUB  R1, R1, R1
+    ADDI R1, R1, 15
+    CALL print_hex_byte
+    LOAD R0, newline
+    PRINTS R0
+
+    HALT
+
+; print_hex_byte: R1=byte -> 2 hex symbols
+print_hex_byte:
+    LOAD R5, hex_tbl
+
+    ; = R1 >> 4
+    SHRI R2, R1, 4
+    ADD  R4, R5, R2
+    LDB  R3, R4
+    PRINTC R3
+
+    ; R1 - ((R1>>4)<<4)
+    SHRI R2, R1, 4
+    SHLI R2, R2, 4
+    SUB  R2, R1, R2
+    ADD  R4, R5, R2
+    LDB  R3, R4
+    PRINTC R3
+
+    RET

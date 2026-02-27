@@ -1,0 +1,13 @@
+    LOAD R0, 0x00, 0xAA    ; R0 = 10101010
+    LOAD R1, 0x00, 0x55    ; R1 = 01010101
+    LOAD R2, 0x00, 0xFF    ; R2 = 11111111
+    
+    XOR R3, R0, R1         ; R3 = 0xAA XOR 0x55 = 0xFF
+    XORI R4, R0, 0xFF      ; R4 = 0xAA XOR 0xFF = 0x55
+    
+    LOAD R5, 0x00, 1       ; R5 = 1
+    SHLI R6, R5, 4         ; R6 = 1 << 4 = 16
+    SHRI R7, R6, 2         ; R7 = 16 >> 2 = 4
+    
+    DBG
+    HALT

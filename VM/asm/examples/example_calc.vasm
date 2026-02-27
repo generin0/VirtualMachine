@@ -1,0 +1,74 @@
+    LOAD R0, 0x00, 65      ; 'A'
+    PRINTC R0
+    LOAD R0, 0x00, 58      ; ':'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    READ R1
+    
+    LOAD R0, 0x00, 66      ; 'B'
+    PRINTC R0
+    LOAD R0, 0x00, 58      ; ':'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    READ R2
+    
+    ADD R3, R1, R2         ; R3 = A + B
+    SUB R4, R1, R2         ; R4 = A - B
+    MUL R5, R1, R2         ; R5 = A * B
+    
+
+    ; "A+B = "
+    LOAD R0, 0x00, 65      ; 'A'
+    PRINTC R0
+    LOAD R0, 0x00, 43      ; '+'
+    PRINTC R0
+    LOAD R0, 0x00, 66      ; 'B'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    LOAD R0, 0x00, 61      ; '='
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    PRINT R3
+    LOAD R0, 0x00, 10      ; '\n'
+    PRINTC R0
+    
+    ; "A-B = "
+    LOAD R0, 0x00, 65      ; 'A'
+    PRINTC R0
+    LOAD R0, 0x00, 45      ; '-'
+    PRINTC R0
+    LOAD R0, 0x00, 66      ; 'B'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    LOAD R0, 0x00, 61      ; '='
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    PRINT R4
+    LOAD R0, 0x00, 10      ; '\n'
+    PRINTC R0
+    
+    ; "A*B = "
+    LOAD R0, 0x00, 65      ; 'A'
+    PRINTC R0
+    LOAD R0, 0x00, 42      ; '*'
+    PRINTC R0
+    LOAD R0, 0x00, 66      ; 'B'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    LOAD R0, 0x00, 61      ; '='
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    PRINT R5
+    LOAD R0, 0x00, 10      ; '\n'
+    PRINTC R0
+    
+    ;DBG
+    HALT

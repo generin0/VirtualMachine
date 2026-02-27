@@ -1,0 +1,12 @@
+    LOAD R0, 0x00, 10      ; counter, 10 iterations
+    LOAD R1, 0x00, 0       ; sum
+    LOAD R2, 0x00, 1       ; increment
+    
+loop:
+    ADD R1, R1, R0         ; adding current counter to the sum
+    SUB R0, R0, R2         ; decreasing counter
+    CMP R0, R2             ; comparing counter to 1
+    JGE loop               ; if counter >= 1, continue loop
+    
+    DBG                    ; R1 = result
+    HALT

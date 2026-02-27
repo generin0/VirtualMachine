@@ -1,0 +1,63 @@
+    LOAD R0, 0x00, 69      ; 'E'
+    PRINTC R0
+    LOAD R0, 0x00, 110     ; 'n'
+    PRINTC R0
+    LOAD R0, 0x00, 116     ; 't'
+    PRINTC R0
+    LOAD R0, 0x00, 101     ; 'e'
+    PRINTC R0
+    LOAD R0, 0x00, 114     ; 'r'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    LOAD R0, 0x00, 110     ; 'n'
+    PRINTC R0
+    LOAD R0, 0x00, 97      ; 'a'
+    PRINTC R0
+    LOAD R0, 0x00, 109     ; 'm'
+    PRINTC R0
+    LOAD R0, 0x00, 101     ; 'e'
+    PRINTC R0
+    LOAD R0, 0x00, 58      ; ':'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    
+    READS 0xB0, 10         ; YOU MUST USE ADDRESS THAT OUT OF PROGRAM MEMORY SPACE
+    
+    ; "You entered: "
+    LOAD R0, 0x00, 89      ; 'Y'
+    PRINTC R0
+    LOAD R0, 0x00, 111     ; 'o'
+    PRINTC R0
+    LOAD R0, 0x00, 117     ; 'u'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+    LOAD R0, 0x00, 101     ; 'e'
+    PRINTC R0
+    LOAD R0, 0x00, 110     ; 'n'
+    PRINTC R0
+    LOAD R0, 0x00, 116     ; 't'
+    PRINTC R0
+    LOAD R0, 0x00, 101     ; 'e'
+    PRINTC R0
+    LOAD R0, 0x00, 114     ; 'r'
+    PRINTC R0
+    LOAD R0, 0x00, 101     ; 'e'
+    PRINTC R0
+    LOAD R0, 0x00, 100     ; 'd'
+    PRINTC R0
+    LOAD R0, 0x00, 58      ; ':'
+    PRINTC R0
+    LOAD R0, 0x00, 32      ; ' '
+    PRINTC R0
+
+    LOAD R0, 0x00, 176
+    PRINTS R0
+    
+    LOAD R0, 0x00, 10      ; '\n'
+    PRINTC R0
+    
+    ;DBG
+    HALT

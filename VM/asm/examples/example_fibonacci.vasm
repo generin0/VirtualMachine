@@ -1,0 +1,22 @@
+main:
+    LOAD R0, 0x00, 10      ; iterations count
+    LOAD R1, 0x00, 0       ; Fib(0) = 0
+    LOAD R2, 0x00, 1       ; Fib(1) = 1
+    LOAD R3, 0x00, 1       ; increment const
+    
+fibonacci_loop:
+    ADD R4, R1, R2         ; R4 = R1 + R2
+    
+    MOV R1, R2             ; R1 = before value
+    MOV R2, R4             ; R2 = new value
+    
+    SUB R0, R0, R3
+    
+    CMP R0, R3
+    JG fibonacci_loop
+    
+result:
+    ; result in R2
+    ; Fib(10) = 55, for 10 iterations
+    DBG
+    HALT

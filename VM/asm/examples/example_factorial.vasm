@@ -1,0 +1,13 @@
+    LOAD R0, 0x00, 5       ; number for factorial
+    LOAD R1, 0x00, 1       ; result
+    LOAD R2, 0x00, 1       ; const 1
+    
+factorial_loop:
+    MUL R1, R1, R0         ; R1 = R1 * R0
+    SUB R0, R0, R2         ; R0 = R0 - 1
+    CMP R0, R2             ; comparing R0 с 1
+    JG factorial_loop      ; if R0 > 1, continue
+    
+    ; result in R1 = 120 (5! = 5*4*3*2*1)
+    DBG
+    HALT

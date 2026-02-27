@@ -1,0 +1,54 @@
+; program to check if a number is prime
+; checks whether the number 17 is prime
+
+    LOAD R0, 0x00, 17      ; number to check (n)
+    LOAD R1, 0x00, 2       ; divisor (start from 2)
+    LOAD R2, 0x00, 1       ; constant 1
+    LOAD R3, 0x00, 1       ; flag: 1 = prime, 0 = composite
+
+    ; check boundary cases
+    CMP R0, R2             ; if n < 2
+    JL not_prime
+    CMP R0, R2             ; if n == 2
+    JE is_prime
+
+check_loop:
+    ; check if we exceeded sqrt(n)
+    ; for simplicity: check divisors up to n/2
+    MOV R4, R0
+    SHRI R4, R4, 1         ; R4 = n/2
+    CMP R1, R4
+    JG is_prime            ; if divisor > n/2, number is prime
+
+    ; check divisibility
+    MOV R5, R0             ; R5 = n
+    MOV R6, R1             ; R6 = divisor
+
+divide_loop:
+    CMP R5, R6
+    JL check_remainder     ; if remainder < divisor, check remainder
+    SUB R5, R5, R6         ; subtract divisor
+    JMP divide_loop
+
+check_remainder:
+    CMP R5, R2             ; compare with 0 (using R2=1+1=2 for test)
+    CMPI R5, 0             ; if remainder == 0
+    JE not_prime           ; number is composite
+
+    ; move to next divisor
+    ADD R1, R1, R2         ; divisor++
+    JMP check_loop
+
+not_prime:
+    LOAD R3, 0x00, 0       ; flag = 0 (composite)
+    JMP end
+
+is_prime:
+    LOAD R3, 0x00, 1       ; flag = 1 (prime)
+
+end:
+    ; R3 contains result:
+    ; 1 = prime
+    ; 0 = composite
+    DBG
+    HALT

@@ -1,0 +1,20 @@
+; program demonstrates stack operations and function calls
+
+    LOAD R0, 0x00, 42      ; num 1
+    LOAD R1, 0x00, 24      ; num 2
+    
+    PUSH R0                ; saves R0 to the stack
+    PUSH R1                ; saves R1 to the stack
+    
+    LOAD R5, 0x00, 7       ; func arg
+    CALL double_func       ; calling func
+    
+    POP R3                 ; pops out of stack to R3
+    POP R4                 ; pops out of stack to R4
+    
+    DBG                    ; R5 should be 14, R3=24, R4=42
+    HALT
+
+double_func:
+    ADD R5, R5, R5         ; doubles R5
+    RET                    ; returning

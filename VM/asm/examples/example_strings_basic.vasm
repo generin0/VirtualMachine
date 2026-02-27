@@ -1,0 +1,29 @@
+.data
+hello:     "Hello, World!\n"
+line:      "---\n"
+empty:     ""
+newline:   "\n"
+tab_test:  "col1\tcol2\tcol3\n"
+numbers:   "1234567890\n"
+
+.text
+start:
+    LOAD R0, hello
+    PRINTS R0
+
+    LOAD R0, line
+    PRINTS R0
+
+    LOAD R0, empty
+    PRINTS R0
+
+    LOAD R0, newline
+    PRINTS R0
+
+    LOAD R0, tab_test
+    PRINTS R0
+
+    LOAD R0, numbers
+    PRINTS R0
+
+    HALT
