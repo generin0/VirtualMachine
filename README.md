@@ -255,7 +255,8 @@ All messages include source line number and the offending source line.
 ### VM
 
 ```bash
-gcc -O2 -o vm main.c vm_core.c vm_opcodes.c vm_flags.c vm_dbg.c
+cd vm
+make
 ```
 
 ### Assembler
