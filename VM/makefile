@@ -7,9 +7,7 @@ all: $(TARGET)
 
 $(TARGET): $(SOURCES) headers/vm.h headers/vm_tests.h
 	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
-	@echo ========================================
 	@echo   Build successful: $(TARGET)
-	@echo ========================================
 
 clean:
 	@echo Cleaning build files...
@@ -22,9 +20,7 @@ clean:
 	@echo Clean completed
 
 run: $(TARGET)
-	@echo ========================================
 	@echo   Running Virtual Machine
-	@echo ========================================
 	@$(TARGET)
 
 rebuild: clean all run
@@ -38,15 +34,11 @@ quick:
 	@echo Quick build done
 
 help:
-	@echo ========================================
-	@echo   Virtual Machine Build System
-	@echo ========================================
 	@echo Commands:
 	@echo   make         - Build vm.exe
 	@echo   make clean   - Remove all build files
 	@echo   make run     - Build and run
 	@echo   make rebuild - Clean, build and run
-	@echo   make debug   - Build with debug info
 	@echo   make quick   - Fast compile (no checks)
 	@echo   make help    - Show this help
 	@echo.
